@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkfy_text/linkfy_text.dart';
 
 ///iMessage's chat bubble type
 ///
@@ -88,9 +89,14 @@ class BubbleSpecialThree extends StatelessWidget {
                   padding: stateTick
                       ? const EdgeInsets.only(left: 4, right: 20)
                       : const EdgeInsets.only(left: 4, right: 4),
-                  child: Text(
+                  child: LinkifyText(
                     text,
-                    style: textStyle,
+                    linkStyle: TextStyle(
+                        color: Color(0xFF00B0FF),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                    linkTypes: [LinkType.userTag],
+                    textStyle: textStyle,
                     textAlign: TextAlign.left,
                   ),
                 ),
