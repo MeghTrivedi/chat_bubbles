@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linkfy_text/linkfy_text.dart';
+import 'package:flutter_parsed_text/flutter_parsed_text.dart';
 
 ///iMessage's chat bubble type
 ///
@@ -86,20 +86,28 @@ class BubbleSpecialThree extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Padding(
-                  padding: stateTick
-                      ? const EdgeInsets.only(left: 4, right: 20)
-                      : const EdgeInsets.only(left: 4, right: 4),
-                  child: LinkifyText(
-                    text,
-                    linkStyle: TextStyle(
-                        color: Color(0xFF00B0FF),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16),
-                    linkTypes: [LinkType.userTag],
-                    textStyle: textStyle,
-                    textAlign: TextAlign.left,
-                  ),
-                ),
+                    padding: stateTick
+                        ? const EdgeInsets.only(left: 4, right: 20)
+                        : const EdgeInsets.only(left: 4, right: 4),
+                    child: ParsedText(
+                      text: text,
+                      style: textStyle,
+                      regexOptions: RegexOptions(
+                          multiLine: true,
+                          caseSensitive: false,
+                          unicode: false,
+                          dotAll: false),
+                      alignment: TextAlign.left,
+                      parse: <MatchText>[
+                        MatchText(
+                          pattern: r"(^|\s)@([A-z]+)\b",
+                          style: TextStyle(
+                              color: Color(0xFF00B0FF),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16),
+                        )
+                      ],
+                    )),
                 stateIcon != null && stateTick
                     ? Positioned(
                         bottom: 0,
