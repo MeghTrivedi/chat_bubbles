@@ -19,11 +19,13 @@ class BubbleSpecialThree extends StatelessWidget {
   final bool delivered;
   final bool seen;
   final TextStyle textStyle;
+  final List<MatchText> parse;
 
   const BubbleSpecialThree({
     Key? key,
     this.isSender = true,
     required this.text,
+    required this.parse,
     this.color = Colors.white70,
     this.tail = true,
     this.sent = false,
@@ -90,24 +92,15 @@ class BubbleSpecialThree extends StatelessWidget {
                         ? const EdgeInsets.only(left: 4, right: 20)
                         : const EdgeInsets.only(left: 4, right: 4),
                     child: ParsedText(
-                      text: text,
-                      style: textStyle,
-                      regexOptions: RegexOptions(
-                          multiLine: true,
-                          caseSensitive: false,
-                          unicode: false,
-                          dotAll: false),
-                      alignment: TextAlign.left,
-                      parse: <MatchText>[
-                        MatchText(
-                          pattern: r"(^|\s)@([A-z]+)\b",
-                          style: TextStyle(
-                              color: Color(0xFF00B0FF),
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16),
-                        )
-                      ],
-                    )),
+                        text: text,
+                        style: textStyle,
+                        regexOptions: RegexOptions(
+                            multiLine: true,
+                            caseSensitive: false,
+                            unicode: false,
+                            dotAll: false),
+                        alignment: TextAlign.left,
+                        parse: this.parse)),
                 stateIcon != null && stateTick
                     ? Positioned(
                         bottom: 0,

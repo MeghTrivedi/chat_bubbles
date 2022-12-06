@@ -162,24 +162,28 @@ class _MyHomePageState extends State<MyHomePage> {
                   delivered: true,
                 ),
                 BubbleSpecialThree(
+                  parse: [],
                   text: 'bubble special three without tail',
                   color: Color(0xFF1B97F3),
                   tail: false,
                   textStyle: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 BubbleSpecialThree(
+                  parse: [],
                   text: 'bubble special three with tail',
                   color: Color(0xFF1B97F3),
                   tail: true,
                   textStyle: TextStyle(color: Colors.white, fontSize: 16),
                 ),
                 BubbleSpecialThree(
+                  parse: [],
                   text: "bubble special three without tail",
                   color: Color(0xFFE8E8EE),
                   tail: false,
                   isSender: false,
                 ),
                 BubbleSpecialThree(
+                  parse: [],
                   text: "bubble special three with tail",
                   color: Color(0xFFE8E8EE),
                   tail: true,
